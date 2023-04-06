@@ -15,7 +15,9 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/api/users",authRouter);
+app.use("/api/auth",authRouter);
+
+app.get('/test', (req, res) => {res.json({msg: 'Hello'})});
 
 const PORT = process.env.PORT || 5000;
 

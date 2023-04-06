@@ -5,8 +5,15 @@ const { check, validationResult } = require('express-validator');
 
 const User = require('../models/User');
 
-const test = (req, res) => {
-  return res.status(200).json({msg: 'AuthRoute works!'});
+const loadUser = async (req, res) => {
+  console.log(req.user);
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 }
 
 const register = async (req, res) => {
@@ -96,7 +103,7 @@ const login = async (req, res) => {
       { expiresIn: '5 days' },
       (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        res.json({ token, user });
       }
     );
   } catch (err) {
@@ -106,7 +113,7 @@ const login = async (req, res) => {
 }
 
 module.exports = {
-  test,
+  loadUser,
   login,
   register
 }

@@ -3,9 +3,11 @@ const { check } = require('express-validator');
 
 const authRouter = express.Router();
 
-const { test, login, register } = require("../../controller/auth");
+const auth = require('../../middleware/auth');
 
-authRouter.get("/test", test);
+const { login, register, loadUser } = require("../../controller/auth");
+
+authRouter.get('/', auth, loadUser);
 authRouter.post(
   "/login", 
   check('email', 'Please include a valid email').isEmail(),
