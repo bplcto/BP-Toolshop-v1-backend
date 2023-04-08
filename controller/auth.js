@@ -6,7 +6,6 @@ const { check, validationResult } = require('express-validator');
 const User = require('../models/User');
 
 const loadUser = async (req, res) => {
-  console.log(req.user);
   try {
     const user = await User.findById(req.user.id).select('-password');
     res.json(user);
@@ -103,7 +102,7 @@ const login = async (req, res) => {
       { expiresIn: '5 days' },
       (err, token) => {
         if (err) throw err;
-        res.json({ token, user });
+        res.json({ token });
       }
     );
   } catch (err) {
