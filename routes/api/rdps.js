@@ -38,7 +38,7 @@ const generateRdps = (num) => {
   return rdps;
 };
 
-// Rdps.insertMany(generateRdps(20))
+// Rdps.insertMany(generateRdps(200))
 //   .then(() => console.log(`20 rdps inserted into database`))
 //   .catch((err) => console.error(err));
 

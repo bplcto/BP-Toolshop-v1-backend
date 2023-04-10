@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb://localhost:27017/bptoolshop",
+  "mongoURI": "mongodb+srv://codemonkey:Psg2002.415.com@cluster0.vlbz2zd.mongodb.net/bptoolshop",
   "jwtSecret": "mysecretkey"
 }
