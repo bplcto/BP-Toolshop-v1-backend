@@ -111,8 +111,28 @@ const login = async (req, res) => {
   }
 }
 
+const resetPassword = async (req, res) => {
+  const {userid} = req.params;
+  const initialPassword = "00000000";
+
+  try {
+    const user = await User.findById(userid);
+
+    const salt = await bcrypt.genSalt(10);
+
+    user.password = await bcrypt.hash(initialPassword, salt);
+
+    await user.save();
+    res.json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({msg: "server Error"});
+  }
+}
+
 module.exports = {
   loadUser,
   login,
-  register
+  register,
+  resetPassword
 }
