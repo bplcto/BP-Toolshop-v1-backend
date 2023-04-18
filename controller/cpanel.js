@@ -65,8 +65,7 @@ const editCpanel = async (req, res) => {
   try {
     const changedCpanel = await Cpanel.findByIdAndUpdate(id, {
       country: cpanel.country,
-      login: cpanel.login,
-      information: cpanel.information,
+      ssl: cpanel.ssl,
       seller: cpanel.seller,
       price: cpanel.price
     }, {new: true});
