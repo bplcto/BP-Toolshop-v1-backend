@@ -21,9 +21,6 @@ const fetchRdpsValues = async (req, res) => {
   res.json(results[0]);
 };
 const fetchRdps = async (req, res) => {
-
-  console.log(req.body);
-
   const {
     country,
     windows,
