@@ -65,8 +65,7 @@ const editShell = async (req, res) => {
   try {
     const changedShell = await Shell.findByIdAndUpdate(id, {
       country: shell.country,
-      login: shell.login,
-      information: shell.information,
+      ssl: shell.ssl,
       seller: shell.seller,
       price: shell.price
     }, {new: true});

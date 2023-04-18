@@ -1,6 +1,6 @@
 const express = require("express");
 const faker = require("faker");
-const { fetchRdps, fetchRdpsValues } = require("../../controller/rdps");
+const { fetchRdps, fetchRdpsValues, editRdp } = require("../../controller/rdps");
 
 const rdpsRouter = express.Router();
 
@@ -38,11 +38,12 @@ const generateRdps = (num) => {
   return rdps;
 };
 
-// Rdps.insertMany(generateRdps(200))
+// Rdps.insertMany(generateRdps(100))
 //   .then(() => console.log(`20 rdps inserted into database`))
 //   .catch((err) => console.error(err));
 
 rdpsRouter.get('/', fetchRdpsValues);
+rdpsRouter.post('/edit/:id', editRdp);
 rdpsRouter.post('/', fetchRdps);
 
 module.exports = rdpsRouter;

@@ -65,8 +65,8 @@ const editSmtp = async (req, res) => {
   try {
     const changedSmtp = await Smtp.findByIdAndUpdate(id, {
       country: smtp.country,
-      login: smtp.login,
-      information: smtp.information,
+      domain: smtp.domain,
+      webmail: smtp.webmail,
       seller: smtp.seller,
       price: smtp.price
     }, {new: true});
