@@ -16,6 +16,7 @@ const loadUser = async (req, res) => {
 }
 
 const register = async (req, res) => {
+  const { role } = req.params;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -37,6 +38,8 @@ const register = async (req, res) => {
       email,
       password
     });
+
+    if (role) user.role = role;
 
     const salt = await bcrypt.genSalt(10);
 
@@ -88,6 +91,12 @@ const login = async (req, res) => {
       return res
         .status(400)
         .json({ errors: [{ msg: 'Invalid Credentials' }] });
+    }
+
+    if (!user.allowed){
+      return res
+        .status(400)
+        .json({ errors: [{ msg: 'Your account was blocked!'}]})
     }
 
     const payload = {

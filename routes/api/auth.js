@@ -15,7 +15,7 @@ authRouter.post(
   login
 );
 authRouter.post(
-  '/register',
+  '/register/:role',
   check('name', 'Name is required').notEmpty(),
   check('email', 'Please include a valid email').isEmail(),
   check(
