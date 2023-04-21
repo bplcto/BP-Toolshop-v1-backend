@@ -13,4 +13,5 @@ RUN npm install
 # Define the entry point for the container
 CMD ["npm", "start"]
 
-EXPOSE 8080
+# Make port 3000 available to the world outside this container
+EXPOSE 3000
