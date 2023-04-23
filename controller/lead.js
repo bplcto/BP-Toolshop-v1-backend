@@ -1,4 +1,4 @@
-const Lead = require('../models/Lead');
+const Lead = require('../models/lead');
 
 const fetchLeadValues = async (req, res) => {
   const results = await Lead.aggregate([{

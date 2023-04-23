@@ -5,7 +5,7 @@ const {fetchLead, fetchLeadValues, editLead} = require("../../controller/lead");
 const leadRouter = express.Router();
 
 const auth = require("../../middleware/auth");
-const Lead = require("../../models/Lead");
+const Lead = require("../../models/lead");
 
 const seller = ["seller20", "seller21"];
 const country = [

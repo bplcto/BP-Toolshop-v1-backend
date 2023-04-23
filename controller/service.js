@@ -8,7 +8,7 @@ const Rdps = require('../models/Rdps');
 const Shell = require('../models/Shell');
 const Smtp = require('../models/Smtp');
 const Vps = require('../models/Vps');
-const Lead = require('../models/Lead');
+const Lead = require('../models/lead');
 
 const service = async (req, res) => {
   try {
