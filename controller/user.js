@@ -1,6 +1,8 @@
-const User = require('../models/User');
+const bcrypt = require('bcryptjs')
 const { v4: uuidv4 } = require('uuid');
 const { sendPasswordResetEmail } = require('../utils/email');
+
+const User = require('../models/User');
 
 const fetchUsers = async (req, res) => {
   const {keyword} = req.body;
@@ -43,16 +45,16 @@ const changePassword = async (req, res) => {
     const user = await User.findById(userId);
     const isMatch = await bcrypt.compare(currentPassword, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Current password is incorrect' });
+      return res.status(400).json({ msg: 'Current password is incorrect' });
     }
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(newPassword, salt);
     user.password = hashedPassword;
     await user.save();
-    res.json({ message: 'Password changed successfully' });
+    res.json({ msg: 'Password changed successfully' });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ msg: 'Server error' });
   }
 }
 
