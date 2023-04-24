@@ -9,13 +9,7 @@ const Smtp = require("../../models/Smtp");
 
 const webmail = ["Yes", "No"];
 const seller = ["seller20", "seller21"];
-const country = [
-  "United States",
-  "Germany",
-  "India",
-  "Russia",
-  "China"
-];
+const country = ["IN", "US", "DE", "CA", "CN", "RS"];
 
 const generateSmtp = (num) => {
   const smtp = [];
@@ -44,7 +38,7 @@ const generateSmtp = (num) => {
 
 // Rdps.insertMany(generateRdps(100)).then(() => console.log(`20 rdps inserted into database`)).catch((err) => console.error(err));
 
-smtpRouter.post('/add', (req, res) => {
+smtpRouter.get('/add', (req, res) => {
   Smtp.insertMany(generateSmtp(100)).then((smtps) => res.json(smtps)).catch((err) => console.error(err))
 });
 smtpRouter.get('/', fetchSmtpValues);

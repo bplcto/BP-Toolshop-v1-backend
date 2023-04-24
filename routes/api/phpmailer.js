@@ -8,13 +8,7 @@ const auth = require("../../middleware/auth");
 const PhpMailer = require("../../models/PhpMailer");
 
 const seller = ["seller20", "seller21"];
-const country = [
-  "United States",
-  "Germany",
-  "India",
-  "Russia",
-  "China"
-];
+const country = ["IN", "US", "DE", "CA", "CN", "RS"];
 
 const generatePhpMailer = (num) => {
   const phpmailer = [];
@@ -41,7 +35,7 @@ const generatePhpMailer = (num) => {
 
 // Rdps.insertMany(generateRdps(100)).then(() => console.log(`20 rdps inserted into database`)).catch((err) => console.error(err));
 
-phpmailerRouter.post('/add', (req, res) => {
+phpmailerRouter.get('/add', (req, res) => {
   PhpMailer.insertMany(generatePhpMailer(100)).then((phpmailers) => res.json(phpmailers)).catch((err) => console.error(err))
 });
 phpmailerRouter.get('/', fetchPhpMailerValues);

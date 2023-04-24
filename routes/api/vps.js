@@ -11,13 +11,7 @@ const windows = ["2022", "2022 ✅✅💯💯", "2022💯✅", "2022 ✅💯"];
 const access = ["Admin", "user", "admin"];
 const ram = ["64gb", "12gb", "32gb"];
 const seller = ["seller20", "seller21"];
-const country = [
-  "United States",
-  "Germany",
-  "India",
-  "Russia",
-  "China"
-];
+const country = ["IN", "US", "DE", "CA", "CN", "RS"];
 
 const generateVps = (num) => {
   const vps = [];
@@ -46,8 +40,8 @@ const generateVps = (num) => {
 
 // Rdps.insertMany(generateRdps(100)).then(() => console.log(`20 rdps inserted into database`)).catch((err) => console.error(err));
 
-vpsRouter.post('/add', (req, res) => {
-  Vps.insertMany(generateVps(100)).then(() => console.log(`20 rdps inserted into database`)).catch((err) => console.error(err))
+vpsRouter.get('/add', (req, res) => {
+  Vps.insertMany(generateVps(100)).then((vps) => res.json(vps)).catch((err) => console.error(err))
 });
 vpsRouter.get('/', fetchVpsValues);
 vpsRouter.post('/edit/:id', editVps);

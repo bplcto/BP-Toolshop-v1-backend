@@ -9,13 +9,7 @@ const Cpanel = require("../../models/Cpanel");
 
 const ssl = ["http", "https"];
 const seller = ["seller20", "seller21"];
-const country = [
-  "United States",
-  "Germany",
-  "India",
-  "Russia",
-  "China"
-];
+const country = ["IN", "US", "DE", "CA", "CN", "RS"];
 
 const generateCpanel = (num) => {
   const cpanel = [];
@@ -41,8 +35,8 @@ const generateCpanel = (num) => {
 
 // Rdps.insertMany(generateRdps(100)).then(() => console.log(`20 rdps inserted into database`)).catch((err) => console.error(err));
 
-cpanelRouter.post('/add', (req, res) => {
-  Cpanel.insertMany(generateCpanel(100)).then(() => console.log(`20 rdps inserted into database`)).catch((err) => console.error(err))
+cpanelRouter.get('/add', (req, res) => {
+  Cpanel.insertMany(generateCpanel(100)).then((cpanels) => res.json(cpanels)).catch((err) => console.error(err))
 });
 cpanelRouter.get('/', fetchCpanelValues);
 cpanelRouter.post('/edit/:id', editCpanel);

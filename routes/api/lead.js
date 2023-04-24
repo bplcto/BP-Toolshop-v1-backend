@@ -8,13 +8,7 @@ const auth = require("../../middleware/auth");
 const Lead = require("../../models/lead");
 
 const seller = ["seller20", "seller21"];
-const country = [
-  "United States",
-  "Germany",
-  "India",
-  "Russia",
-  "China"
-];
+const country = ["IN", "US", "DE", "CA", "CN", "RS"];
 
 const generateLead = (num) => {
   const lead = [];
@@ -39,7 +33,7 @@ const generateLead = (num) => {
 
 // Rdps.insertMany(generateRdps(100)).then(() => console.log(`20 rdps inserted into database`)).catch((err) => console.error(err));
 
-leadRouter.post('/add', (req, res) => {
+leadRouter.get('/add', (req, res) => {
   Lead.insertMany(generateLead(100)).then((leads) => res.json(leads)).catch((err) => console.error(err))
 });
 leadRouter.get('/', fetchLeadValues);

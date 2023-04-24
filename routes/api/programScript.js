@@ -9,13 +9,7 @@ const ProgramScript = require("../../models/ProgramScript");
 
 const ssl = ["http", "https"];
 const seller = ["seller20", "seller21"];
-const country = [
-  "United States",
-  "Germany",
-  "India",
-  "Russia",
-  "China"
-];
+const country = ["IN", "US", "DE", "CA", "CN", "RS"];
 
 const generateProgramScript = (num) => {
   const programScript = [];
@@ -39,8 +33,8 @@ const generateProgramScript = (num) => {
 
 // Rdps.insertMany(generateRdps(100)).then(() => console.log(`20 rdps inserted into database`)).catch((err) => console.error(err));
 
-programScriptRouter.post('/add', (req, res) => {
-  ProgramScript.insertMany(generateProgramScript(100)).then(() => console.log(`20 rdps inserted into database`)).catch((err) => console.error(err))
+programScriptRouter.get('/add', (req, res) => {
+  ProgramScript.insertMany(generateProgramScript(100)).then((programScripts) => res.json(programScripts)).catch((err) => console.error(err))
 });
 programScriptRouter.get('/', fetchProgramScriptValues);
 programScriptRouter.post('/edit/:id', editProgramScript);

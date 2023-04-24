@@ -9,13 +9,7 @@ const Method = require("../../models/Method");
 
 const ssl = ["http", "https"];
 const seller = ["seller20", "seller21"];
-const country = [
-  "United States",
-  "Germany",
-  "India",
-  "Russia",
-  "China"
-];
+const country = ["IN", "US", "DE", "CA", "CN", "RS"];
 
 const generateMethod = (num) => {
   const method = [];
@@ -39,8 +33,8 @@ const generateMethod = (num) => {
 
 // Rdps.insertMany(generateRdps(100)).then(() => console.log(`20 rdps inserted into database`)).catch((err) => console.error(err));
 
-methodRouter.post('/add', (req, res) => {
-  Method.insertMany(generateMethod(100)).then(() => console.log(`20 rdps inserted into database`)).catch((err) => console.error(err))
+methodRouter.get('/add', (req, res) => {
+  Method.insertMany(generateMethod(100)).then((methods) => res.json(methods)).catch((err) => console.error(err))
 });
 methodRouter.get('/', fetchMethodValues);
 methodRouter.post('/edit/:id', editMethod);

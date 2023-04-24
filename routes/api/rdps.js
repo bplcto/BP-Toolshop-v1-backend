@@ -11,7 +11,7 @@ const windows = ["2022", "2022 ✅✅💯💯", "2022💯✅", "2022 ✅💯"];
 const access = ["Admin", "user", "admin"];
 const ram = ["64gb", "12gb", "32gb"];
 const seller = ["seller20", "seller21"];
-const country = ["United States", "Germany", "India", "Russia", "China"];
+const country = ["IN", "US", "DE", "CA", "CN", "RS"];
 
 const generateRdps = (num) => {
   const rdps = [];
@@ -38,10 +38,12 @@ const generateRdps = (num) => {
   return rdps;
 };
 
-// Rdps.insertMany(generateRdps(100))
-//   .then(() => console.log(`20 rdps inserted into database`))
-//   .catch((err) => console.error(err));
 
+rdpsRouter.get('/add',(req,res) => {
+  Rdps.insertMany(generateRdps(100))
+  .then((rdps) => res.json(rdps))
+  .catch((err) => console.error(err));
+})
 rdpsRouter.get('/', fetchRdpsValues);
 rdpsRouter.post('/edit/:id', editRdp);
 rdpsRouter.post('/', fetchRdps);

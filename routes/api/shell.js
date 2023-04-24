@@ -9,13 +9,7 @@ const Shell = require("../../models/Shell");
 
 const ssl = ["http", "https"];
 const seller = ["seller20", "seller21"];
-const country = [
-  "United States",
-  "Germany",
-  "India",
-  "Russia",
-  "China"
-];
+const country = ["IN", "US", "DE", "CA", "CN", "RS"];
 
 const generateShell = (num) => {
   const shell = [];
@@ -41,8 +35,8 @@ const generateShell = (num) => {
 
 // Rdps.insertMany(generateRdps(100)).then(() => console.log(`20 rdps inserted into database`)).catch((err) => console.error(err));
 
-shellRouter.post('/add', (req, res) => {
-  Shell.insertMany(generateShell(100)).then(() => console.log(`20 rdps inserted into database`)).catch((err) => console.error(err))
+shellRouter.get('/add', (req, res) => {
+  Shell.insertMany(generateShell(100)).then((shells) => res.json(shells)).catch((err) => console.error(err))
 });
 shellRouter.get('/', fetchShellValues);
 shellRouter.post('/edit/:id', editShell);
