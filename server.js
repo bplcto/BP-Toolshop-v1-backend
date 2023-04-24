@@ -1,4 +1,6 @@
 const express = require('express');
+const cors = require('cors');
+
 const connectDB = require('./config/db');
 const bodyParser = require('body-parser');
 const userRouter = require('./routes/api/user');
@@ -22,6 +24,8 @@ connectDB();
 
 // Init Middleware
 app.use(express.json());
+
+app.use(cors());
 
 // Body Parse
 app.use(bodyParser.json());
