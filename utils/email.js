@@ -18,13 +18,13 @@ const sendPasswordResetEmail = async (email, token) => {
     service: 'gmail',
     auth: {
         user: 'james.gaylor721@gmail.com',
-        pass: 'psg20020415'
+        pass: 'Psg2002.415.com'
     }
   });
   
   let mailOptions = {
     from: 'james.gaylor721@gmail.com',
-    to: 'luckycodemoneky@gmail.com',
+    to: 'foryoursuccess0415@gmail.com',
     subject: 'Test Email',
     text: 'This is a test email sent using node-mailer.'
   };
