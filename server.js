@@ -15,6 +15,7 @@ const leadRouter = require('./routes/api/lead');
 const premiumShopRouter = require('./routes/api/premiumShop');
 const programScriptRouter = require('./routes/api/programScript');
 const methodRouter = require('./routes/api/method');
+const ticketRouter = require('./routes/api/ticket');
 const serviceRouter = require('./routes/api/service');
 
 const app = express();
@@ -43,6 +44,7 @@ app.use("/api/lead", leadRouter);
 app.use("/api/premiumShop", premiumShopRouter);
 app.use("/api/programScript", programScriptRouter);
 app.use("/api/method", methodRouter);
+app.use("/api/ticket", ticketRouter);
 app.use("/api/service", serviceRouter);
 
 const PORT = process.env.PORT || 5000;
