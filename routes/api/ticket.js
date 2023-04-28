@@ -8,7 +8,7 @@ const auth = require('../../middleware/auth');
 const { fetchTickets, placeTicket, replyTicket, fetchTicketsByUser } = require("../../controller/ticket");
 
 ticketRouter.get('/', auth, fetchTickets);
-ticketRouter.post('/user', auth, fetchTicketsByUser);
+ticketRouter.get('/user', auth, fetchTicketsByUser);
 ticketRouter.post(
   "/", 
   auth,
@@ -17,10 +17,6 @@ ticketRouter.post(
   check('message', 'Message is required').notEmpty(),
   placeTicket
 );
-ticketRouter.post(
-  '/reply/:id',
-  auth,
-  replyTicket
-)
+ticketRouter.post('/reply/:id', auth, replyTicket);
 
 module.exports =  ticketRouter;
