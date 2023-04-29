@@ -11,7 +11,7 @@ const loadUser = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send({msg: 'Server Error'});
   }
 }
 
@@ -64,7 +64,7 @@ const register = async (req, res) => {
     );
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).send({msg: 'Server error'});
   }
 }
 
@@ -116,7 +116,7 @@ const login = async (req, res) => {
     );
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).send({msg: 'Server error'});
   }
 }
 
